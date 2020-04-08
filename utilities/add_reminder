@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Make a new reminder via terminal script
+# args: remind <title> <date> <time>
+
+osascript - "$1" <<END
+on run argv
+    tell application "Reminders"
+        make new reminder with properties {name:item 1 of argv}
+    end tell
+end run
+END

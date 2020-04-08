@@ -86,6 +86,7 @@ apps=(
   adobe-creative-cloud
   slack
   evernote
+  docker
 )
 
 # Install apps to /Applications
@@ -95,7 +96,13 @@ brew cask install --appdir="/Applications" ${apps[@]}
 
 brew cask install https://raw.githubusercontent.com/Homebrew/homebrew-cask/6a96e5ea44803e52a43c0c89242390f75d1581ab/Casks/kdiff3.rb
 
-brew install mas
+echo "Installing rbenv..."
+brew install rbenv
+rbenv init
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+
+echo "Installing nvm..."
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 brew cleanup
 
@@ -117,6 +124,33 @@ echo "Setting terminal theme..."
 
 echo "Setting up Sublime..."
 ~/.my_mac/sublime/install.sh
+
+# Open extensions for easy install
+open -a "Google Chrome" https://chrome.google.com/webstore/search/lastpass
+open -a "Google Chrome" https://chrome.google.com/webstore/search/%22the%20great%20suspender%22
+
+# Set reminders for other things to do
+reminders=(
+  "Add Lastpass extension"
+  "Setup Dropbox"
+  "Download Photos"
+  "Setup Creative Cloud"
+  "Log in to MS Office"
+  "Add Sublime license"
+  "Clean up dock and pin useful apps"
+  "Clean finder: hide tags, etc"
+  "Add Gmail contacts (add account)"
+  "Login to Slack"
+  "Login to Harvest"
+  "Set desktop backgrounds to cycle"
+)
+
+for reminder in "${reminders[@]}"
+do
+   ~/.my_mac/utilities/add_reminder "$reminder"
+done
+
+open -a "Reminders"
 
 echo "Done!"
 
