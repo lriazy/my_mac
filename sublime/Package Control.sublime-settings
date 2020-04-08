@@ -1,0 +1,21 @@
+{
+  "bootstrapped": true,
+  "in_process_packages":
+  [
+  ],
+  "installed_packages":
+  [
+    "HTML-CSS-JS Prettify",
+    "Jinja2",
+    "MoveTab",
+    "Package Control",
+    "PackageSync",
+    "Pretty JSON",
+    "SASS Build",
+    "SublimeLinter",
+    "SublimeLinter-rubocop",
+    "Theme - Soda",
+    "Theme - SoDaReloaded",
+    "TypeScript"
+  ]
+}

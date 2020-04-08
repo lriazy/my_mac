@@ -11,13 +11,23 @@ if [ ! -f ~/.ssh/id_rsa ]; then
   echo "Creating an SSH key for you..."
   ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -C "jpslav@gmail.com"
 
-  osascript -e 'tell application (path to frontmost application as text) to display dialog "Press OK to open a browser for adding your new ~/.ssh/id_rsa key to Github" buttons {"OK"}'
+  # Haven't cloned the git repo yet so just curl it down
+  curl https://raw.githubusercontent.com/jpslav/my_mac/master/dotfiles/ssh_config --output ~/.ssh/config
+
+  ssh-add -K ~/.ssh/id_rsa
+
+  pbcopy < ~/.ssh/id_rsa.pub
+
+  osascript -e 'tell application (path to frontmost application as text) to display dialog "Press OK to open a browser for adding your new ~/.ssh/id_rsa key to Github - it is copied to your clipboard" buttons {"OK"}'
 
   open "https://github.com/account/ssh"
   read -p "Press [Enter] key after you have added your SSH key to Github..."
 fi
 
 echo "Installing xcode-stuff"
+if test $(which xcodebuild); then
+  sudo xcodebuild -license accept
+fi
 xcode-select --install
 
 # Check for Homebrew,
@@ -72,7 +82,10 @@ apps=(
   spotify
   sublime-text
   zoomus
-  https://raw.githubusercontent.com/Homebrew/homebrew-cask/6a96e5ea44803e52a43c0c89242390f75d1581ab/Casks/kdiff3.rb
+  microsoft-office
+  adobe-creative-cloud
+  slack
+  evernote
 )
 
 # Install apps to /Applications
@@ -80,20 +93,33 @@ apps=(
 echo "installing apps with Cask..."
 brew cask install --appdir="/Applications" ${apps[@]}
 
+brew cask install https://raw.githubusercontent.com/Homebrew/homebrew-cask/6a96e5ea44803e52a43c0c89242390f75d1581ab/Casks/kdiff3.rb
+
+brew install mas
+
 brew cleanup
 
-echo "Please setup and sync Dropbox, and then run this script again."
-read -p "Press [Enter] key after this..."
-
-echo "Restoring setup from Mackup..."
-#mackup restore @TODO uncomment
+# echo "Please setup and sync Dropbox, and then run this script again."
+# read -p "Press [Enter] key after this..."
 
 echo "Setting some Mac settings..."
-./set_preferences.sh
+~/.my_mac/set_preferences.sh
 
 echo "Setting terminal theme..."
-./set_terminal_theme.sh
+~/.my_mac/set_terminal_theme.sh
+
+# # ###############################################################################
+# # # Sublime Text                                                                #
+# # ###############################################################################
+
+# # # Install Sublime Text settings
+# cp ~/.my_mac/dotfiles/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+
+echo "Setting up Sublime..."
+~/.my_mac/sublime/install.sh
 
 echo "Done!"
 
-#@TODO install vagrant and sites folder
+echo "About to kill terminal so that its settings take hold... pausing for 10 seconds..."
+sleep 10
+killall Terminal

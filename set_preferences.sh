@@ -16,15 +16,26 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 #sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
 #sudo ln -s /path/to/your/image /System/Library/CoreServices/DefaultDesktop.jpg
 
+# Show battery percentage
+defaults write com.apple.menuextra.battery ShowPercent -bool true
+
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM h:mm a"
+
 # Hide language menu in the top right corner of the boot screen
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool false
 
 # Require password 5 seconds after sleep or screen saver begins
-# defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPassword -bool true
 defaults write com.apple.screensaver askForPasswordDelay -int 5
+defaults -currentHost write com.apple.screensaver idleTime 300
+defaults write com.apple.applicationaccess allowAutoUnlock -bool true
 
 # Disable “natural” (Lion-style) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+# Enable Secure Keyboard Entry in Terminal.app
+# See: https://security.stackexchange.com/a/47786/8918
+defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
 # #"Disabling system-wide resume"
 # defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
@@ -34,6 +45,8 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 #"Allow text selection in Quick Look"
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE
+
+defaults write com.apple.finder NewWindowTargetPath -string "~"
 
 # #"Disabling OS X Gate Keeper"
 # #"(You'll be able to install any app you want from here on, not just Mac App Store apps)"
@@ -87,8 +100,8 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
-# Display full POSIX path as Finder window title
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+# # Display full POSIX path as Finder window title
+# defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # Keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
@@ -100,7 +113,9 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 #"Use column view in all Finder windows by default"
-defaults write com.apple.finder FXPreferredViewStyle Clmv
+defaults write com.apple.finder FXPreferredViewStyle clmv
+
+defaults write com.apple.screencapture location -string "$\{HOME\}/Dropbox/Screenshots"
 
 #"Avoiding the creation of .DS_Store files on network volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -144,9 +159,6 @@ sudo pmset -a sms 0
 
 #"Disable annoying backswipe in Chrome"
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
-
-#"Setting screenshots location to ~/Desktop"
-defaults write com.apple.screencapture location -string "$HOME/Desktop"
 
 #"Setting screenshot format to PNG"
 defaults write com.apple.screencapture type -string "png"
@@ -222,15 +234,8 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
 
-# ###############################################################################
-# # Sublime Text                                                                #
-# ###############################################################################
-
-# # Install Sublime Text settings
-# cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
-
 ###############################################################################
-# Kill affected applications                                                  #
+# Kill affected applications (skip Terminal to not kill the script :-)        #
 ###############################################################################
 
 for app in "Activity Monitor" \
@@ -246,7 +251,6 @@ for app in "Activity Monitor" \
 	"Photos" \
 	"Safari" \
 	"SystemUIServer" \
-	"Terminal" \
 	"iCal"; do
 	killall "${app}" &> /dev/null
 done
