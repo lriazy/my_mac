@@ -1,3 +1,12 @@
+read -p 'Enter the name for this computer (Return to skip): ' macname
+
+if [ ! $macname == "" ]; then
+  echo "here"
+  sudo scutil --set ComputerName $macname
+  sudo scutil --set LocalHostName $macname
+  sudo scutil --set HostName $macname
+fi
+
 if [ ! -f ~/.ssh/id_rsa ]; then
   echo "Creating an SSH key for you..."
   ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -C "jpslav@gmail.com"
@@ -15,7 +24,7 @@ xcode-select --install
 # Install if we don't have it
 if test ! $(which brew); then
   echo "Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 # Update homebrew recipes
@@ -24,13 +33,13 @@ brew update
 
 echo "Installing latest Bash and setting it as the default shell..."
 brew install bash
+sudo bash -c "echo '/usr/local/bin/bash' >> /etc/shells"
 chsh -s /usr/local/bin/bash
 
 echo "Installing Git..."
 brew install git
 
 echo "Git config"
-
 git config --global user.name "JP Slavinsky"
 git config --global user.email jpslav@gmail.com
 
@@ -39,9 +48,6 @@ brew install wget
 
 echo "Cleaning up brew"
 brew cleanup
-
-echo "Installing homebrew cask"
-brew install caskroom/cask/brew-cask
 
 echo "Cloning my_mac"
 cd ~
@@ -53,7 +59,7 @@ cd ~/.my_mac/dotfiles
 
 echo "Linking my_mac bin directory"
 cd ~
-ln -s ~/bin ~/.my_mac/bin
+ln -nfs ~/.my_mac/bin ~/bin
 
 # Apps
 apps=(
@@ -64,7 +70,7 @@ apps=(
   harvest
   steam
   spotify
-  sublime-text3
+  sublime-text
   zoomus
 )
 
@@ -73,9 +79,6 @@ apps=(
 echo "installing apps with Cask..."
 brew cask install --appdir="/Applications" ${apps[@]}
 
-brew cask alfred link
-
-brew cask cleanup
 brew cleanup
 
 echo "Please setup and sync Dropbox, and then run this script again."
@@ -242,8 +245,8 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
-osascript -e 'tell application (path to frontmost application as text) to display dialog "Press OK, then when a terminal pops up, go to Preferences and set the current theme as the default'
-open "Pro (JP).terminal"
+osascript -e 'tell application (path to frontmost application as text) to display dialog "Press OK, then when a terminal pops up, go to Preferences and set the current theme as the default"'
+open ~/.my_mac/Pro\ \(JP\).terminal
 
 killall Finder
 
