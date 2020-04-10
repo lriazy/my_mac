@@ -25,9 +25,6 @@ if [ ! -f ~/.ssh/id_rsa ]; then
 fi
 
 echo "Installing xcode-stuff"
-if test $(which xcodebuild); then
-  sudo xcodebuild -license accept
-fi
 xcode-select --install
 
 # Check for Homebrew,
