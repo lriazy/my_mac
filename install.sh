@@ -1,7 +1,6 @@
 read -p 'Enter the name for this computer (Return to skip): ' macname
 
 if [ ! $macname == "" ]; then
-  echo "here"
   sudo scutil --set ComputerName $macname
   sudo scutil --set LocalHostName $macname
   sudo scutil --set HostName $macname
@@ -78,6 +77,7 @@ apps=(
   steam
   spotify
   sublime-text
+  sublime-merge
   zoomus
   microsoft-office
   adobe-creative-cloud
@@ -93,10 +93,14 @@ brew cask install --appdir="/Applications" ${apps[@]}
 
 brew cask install https://raw.githubusercontent.com/Homebrew/homebrew-cask/6a96e5ea44803e52a43c0c89242390f75d1581ab/Casks/kdiff3.rb
 
+echo "Installing the AWS CLI v2..."
+cd /tmp
+wget https://awscli.amazonaws.com/AWSCLIV2.pkg
+open AWSCLIV2.pkg
+cd ~
+
 echo "Installing rbenv..."
-brew install rbenv
-rbenv init
-curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+~/.my_mac/install_ruby.sh
 
 echo "Installing nvm..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash

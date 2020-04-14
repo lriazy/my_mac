@@ -157,6 +157,10 @@ sudo pmset -a sms 0
 # # http://www.cultofmac.com/221392/quick-hack-speeds-up-retina-macbooks-wake-from-sleep-os-x-tips/
 # sudo pmset -a standbydelay 86400
 
+# Enable App Exposé
+# Swipe down with three/four fingers
+defaults write com.apple.dock showAppExposeGestureEnabled -bool true
+
 #"Disable annoying backswipe in Chrome"
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 
