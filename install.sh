@@ -151,6 +151,8 @@ reminders=(
   "Set desktop backgrounds to cycle"
   "Install Moom"
   "Install GoodNotes"
+  "Enable apple watch to unlock mac"
+  "Require password 5 seconds after screensaver"
 )
 
 for reminder in "${reminders[@]}"
