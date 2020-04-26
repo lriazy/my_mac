@@ -84,6 +84,7 @@ apps=(
   slack
   evernote
   docker
+  anylist
 )
 
 # Install apps to /Applications
@@ -126,6 +127,10 @@ echo "Setting terminal theme..."
 echo "Setting up Sublime..."
 ~/.my_mac/sublime/install.sh
 
+# Install secrets
+echo "Installing secrets..."
+~/.my_mac/install_secrets.rb
+
 # Open extensions for easy install
 open -a "Google Chrome" https://chrome.google.com/webstore/search/lastpass
 open -a "Google Chrome" https://chrome.google.com/webstore/search/%22the%20great%20suspender%22
@@ -144,6 +149,8 @@ reminders=(
   "Login to Slack"
   "Login to Harvest"
   "Set desktop backgrounds to cycle"
+  "Install Moom"
+  "Install GoodNotes"
 )
 
 for reminder in "${reminders[@]}"
