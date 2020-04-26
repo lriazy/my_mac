@@ -153,6 +153,7 @@ reminders=(
   "Install GoodNotes"
   "Enable apple watch to unlock mac"
   "Require password 5 seconds after screensaver"
+  "Install Sublime package control and maybe rerun sublime install script"
 )
 
 for reminder in "${reminders[@]}"
