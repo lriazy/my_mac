@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-require 'byebug'
 
 def run(command, print: false)
 	puts "Running: #{command}" if print
