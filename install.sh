@@ -63,9 +63,8 @@ echo "Setting up dotfiles"
 cd ~/.my_mac/dotfiles
 ./setup_dotfiles.sh
 
-echo "Linking my_mac bin directory"
-cd ~
-ln -nfs ~/.my_mac/bin ~/bin
+echo "Installing bin dir..."
+~/.my_mac/bom/install.sh
 
 # Apps
 apps=(

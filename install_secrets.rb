@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
 
+# Downloads secrets from lastpass
+
 def run(command, print: false)
 	puts "Running: #{command}" if print
-	`command`
+	`#{command}`
 end
 
 begin
@@ -17,7 +19,7 @@ begin
 	#
 	# lastpass_record_name:local_directory:local_filename
 	#
-	# local_filename (and the colon preceding it) can be left out and the 
+	# local_filename (and the colon preceding it) can be left out and the
 	# lastpass_record_name will be used for it.
 	#
 	# blank lines are skipped, comments are allowed with first character '#'
@@ -31,7 +33,7 @@ begin
 
 		local_dir = File.expand_path(local_dir)
 		local_path = File.join(local_dir, local_filename || lastpass_name).gsub(/ /,'\ ')
-		
+
 		run(%Q(chmod 777 #{local_path})) if File.exists?(local_path)
 
 		run(%Q(mkdir -p "#{local_dir}"))
