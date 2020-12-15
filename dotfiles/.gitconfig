@@ -13,3 +13,5 @@
 	ui = true
 [core]
 	excludesfile = ~/.gitignore
+[pull]
+	ff = only
