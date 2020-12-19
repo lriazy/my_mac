@@ -84,12 +84,13 @@ apps=(
   evernote
   docker
   anylist
+  visual-studio-code
 )
 
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
 echo "installing apps with Cask..."
-brew cask install --appdir="/Applications" ${apps[@]}
+brew cask install --appdir="/Applications" --cask ${apps[@]}
 
 brew cask install https://raw.githubusercontent.com/Homebrew/homebrew-cask/6a96e5ea44803e52a43c0c89242390f75d1581ab/Casks/kdiff3.rb
 
