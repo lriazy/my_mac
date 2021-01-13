@@ -1,3 +1,5 @@
+# Gmail
+
 In Chrome, go to your Rice GMail.
 
 Right click somewhere on the page, then click "Inspect".  Go to the "Console" tab of the window that pops up.
@@ -14,12 +16,15 @@ Then copy and paste the following and hit enter:
 const startUrl = `https://mail.google.com/mail/u/?authuser=${email}`;
 const name = 'Rice&nbsp;Gmail';
 const description = 'Rice&nbsp;Gmail';
+const logo = 'gmail_rice';
+```
 
+```js
 document.head
   .querySelector(':first-child')
   .insertAdjacentHTML(
     'beforebegin',
-    `<link rel="manifest" href='data:application/manifest+json,{"start_url":"${startUrl}", "name":"${name}", "description": "${description}", "icons": [{ "src": "https://github.com/jpslav/my_mac/raw/master/logos/gmail_rice_512.png", "type": "image/png", "sizes": "512x512" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/gmail_rice_256.png", "type": "image/png", "sizes": "256x256" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/gmail_rice_128.png", "type": "image/png", "sizes": "128x128" }]}' />`,
+    `<link rel="manifest" href='data:application/manifest+json,{"start_url":"${startUrl}", "name":"${name}", "description": "${description}", "icons": [{ "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_512.png", "type": "image/png", "sizes": "512x512" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_256.png", "type": "image/png", "sizes": "256x256" }, { "src": "https://github.com/jpslav/my_mac/raw/master/logos/${logo}_128.png", "type": "image/png", "sizes": "128x128" }]}' />`,
   );
 ```
 
@@ -28,3 +33,14 @@ Next, go to the three-dot menu in the upper right corner of Chrome.  Click More 
 You should see "Rice Gmail" in the dialog box.  Check the "Open in new window" box and hit "Create".
 
 Your new app will be in your dock (in Mac OS).  Right-click on it, click on "Options", then select "Keep in Dock".
+
+# Google Calendar
+
+Ditto the above except start from your Rice Google Calendar and replace the middle block of Javascript with:
+
+```js
+const startUrl = `https://calendar.google.com/calendar/u/?authuser=${email}`;
+const name = 'Rice&nbsp;Calendar';
+const description = 'Rice&nbsp;Calendar';
+const logo = 'gcal_rice';
+```
