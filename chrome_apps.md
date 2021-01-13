@@ -1,3 +1,7 @@
+Tired of losing your Rice email and calendar in a see of Chrome tabs?  Follow the instructions below to make separate Chrome apps for both Rice Gmail and Rice Google Calendar.  These apps are separate from Chrome and much easier to access.
+
+![What it looks like in the Mac OS dock](logos/rice_google_in_dock.png)
+
 # Gmail
 
 In Chrome, go to your Rice GMail.
