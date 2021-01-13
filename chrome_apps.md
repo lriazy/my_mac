@@ -1,11 +1,19 @@
+In Chrome, go to your Rice GMail.
+
+Right click somewhere on the page, then click "Inspect".  Go to the "Console" tab of the window that pops up.
+
+Copy and paste this at the console prompt, replacing 'example@rice.edu' with your email address:
+
 ```js
 const email = 'example@rice.edu'
 ````
 
+Then copy and paste the following and hit enter:
+
 ```js
 const startUrl = `https://mail.google.com/mail/u/?authuser=${email}`;
-const name = 'Rice&nbsp;GMail';
-const description = 'Rice&nbsp;GMail';
+const name = 'Rice&nbsp;Gmail';
+const description = 'Rice&nbsp;Gmail';
 
 document.head
   .querySelector(':first-child')
@@ -15,4 +23,8 @@ document.head
   );
 ```
 
+Next, go to the three-dot menu in the upper right corner of Chrome.  Click More Tools | Create Shortcut...
 
+You should see "Rice Gmail" in the dialog box.  Check the "Open in new window" box and hit "Create".
+
+Your new app will be in your dock (in Mac OS).  Right-click on it, click on "Options", then select "Keep in Dock".
