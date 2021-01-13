@@ -39,7 +39,7 @@ Your new app will be in your dock (in Mac OS).  Right-click on it, click on "Opt
 Ditto the above except start from your Rice Google Calendar and replace the middle block of Javascript with:
 
 ```js
-const startUrl = `https://calendar.google.com/calendar/u/?authuser=${email}`;
+const startUrl = `https://calendar.google.com/calendar/?authuser=${email}`;
 const name = 'Rice&nbsp;Calendar';
 const description = 'Rice&nbsp;Calendar';
 const logo = 'gcal_rice';
