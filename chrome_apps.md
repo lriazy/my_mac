@@ -48,3 +48,14 @@ const name = 'Rice&nbsp;Calendar';
 const description = 'Rice&nbsp;Calendar';
 const logo = 'gcal_rice';
 ```
+
+# Google Drive
+
+Ditto above except middle block of Javascript is:
+
+```js
+const startUrl = `https://drive.google.com/drive/u/?authuser=${email}`;
+const name = 'Rice&nbsp;Drive';
+const description = 'Rice&nbsp;Drive';
+const logo = 'drive_rice';
+```
