@@ -37,25 +37,11 @@ export LSCOLORS=ExGxCxDxBxegedabagaced
 
 export PS1='$(~/bin/prompt.pl)'
 
-alias up='cd ..'
-alias ss='source ~/.bashrc'
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-alias ll="ls -l -GF"
-alias lr='ls -lR'          # recursive ls
-alias tree='tree -Csu'     # nice alternative to 'recursive ls'
-
-alias gitdt="git difftool --no-prompt -t kdiff3"
-alias gitdtc="gitdt --cached"
-alias gitmr="git merge --no-commit --no-ff"
-alias gitmt="git mergetool --no-prompt -t kdiff3"
-
-alias be="bundle exec"
-
-alias startpg='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
-
-alias rmorig='find . -name "*.orig" -delete'
-
-alias uncommit='git reset --soft HEAD^'
+if [ -f $DIR/.bash_aliases ]; then
+    . $DIR/.bash_aliases
+fi
 
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
