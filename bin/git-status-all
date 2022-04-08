@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# https://stackoverflow.com/a/32815987
+
+# Report git status for all repos under the current directory
+
+find . -type d -name '.git' | while read dir ; do sh -c "cd $dir/../ && echo -e \"\nGIT STATUS IN ${dir//\.git/}\" && git status -s" ; done
