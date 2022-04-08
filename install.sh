@@ -64,7 +64,7 @@ cd ~/.my_mac/dotfiles
 ./setup_dotfiles.sh
 
 echo "Installing bin dir..."
-~/.my_mac/bom/install.sh
+~/.my_mac/bin/install.sh
 
 # Apps
 apps=(
