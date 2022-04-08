@@ -72,19 +72,16 @@ apps=(
   dropbox
   firefox
   google-chrome
-  harvest
   steam
   spotify
-  sublime-text
-  sublime-merge
   zoomus
   microsoft-office
   adobe-creative-cloud
   slack
-  evernote
   docker
   anylist
   visual-studio-code
+  mimestream
 )
 
 # Install apps to /Applications
@@ -117,23 +114,12 @@ echo "Setting some Mac settings..."
 echo "Setting terminal theme..."
 ~/.my_mac/set_terminal_theme.sh
 
-# # ###############################################################################
-# # # Sublime Text                                                                #
-# # ###############################################################################
-
-# # # Install Sublime Text settings
-# cp ~/.my_mac/dotfiles/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
-
-echo "Setting up Sublime..."
-~/.my_mac/sublime/install.sh
-
 # Install secrets
 echo "Installing secrets..."
 ~/.my_mac/install_secrets.rb
 
 # Open extensions for easy install
 open -a "Google Chrome" https://chrome.google.com/webstore/search/lastpass
-open -a "Google Chrome" https://chrome.google.com/webstore/search/%22the%20great%20suspender%22
 
 # Set reminders for other things to do
 reminders=(
@@ -142,18 +128,15 @@ reminders=(
   "Download Photos"
   "Setup Creative Cloud"
   "Log in to MS Office"
-  "Add Sublime license"
   "Clean up dock and pin useful apps"
   "Clean finder: hide tags, etc"
   "Add Gmail contacts (add account)"
   "Login to Slack"
-  "Login to Harvest"
   "Set desktop backgrounds to cycle"
   "Install Moom"
   "Install GoodNotes"
   "Enable apple watch to unlock mac"
   "Require password 5 seconds after screensaver"
-  "Install Sublime package control and maybe rerun sublime install script"
 )
 
 for reminder in "${reminders[@]}"
