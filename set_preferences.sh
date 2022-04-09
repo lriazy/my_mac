@@ -88,8 +88,8 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 # #"Showing icons for hard drives, servers, and removable media on the desktop"
 # defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 
-#"Showing all filename extensions in Finder by default"
-# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+#"Showing all filename extensions in Finder by default" (when true)
+# defaults write NSGlobalDomain AppleShowAllExtensions -bool false
 
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
