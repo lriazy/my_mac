@@ -66,7 +66,7 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 # defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 #"Check for software updates daily, not just once per week"
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 3
 
 # #"Disable smart quotes and smart dashes as they are annoying when typing code"
 # defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -89,7 +89,7 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 # defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 
 #"Showing all filename extensions in Finder by default"
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true

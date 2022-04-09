@@ -5,7 +5,9 @@
 osascript - "$1" <<END
 on run argv
     tell application "Reminders"
-        make new reminder with properties {name:item 1 of argv}
+        if not (exists (first reminder whose name is (item 1 of argv))) then
+            make new reminder with properties {name:item 1 of argv}
+        end if
     end tell
 end run
 END

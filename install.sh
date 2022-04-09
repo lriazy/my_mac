@@ -39,7 +39,8 @@ brew update
 
 echo "Installing latest Bash and setting it as the default shell..."
 brew install bash
-sudo bash -c "echo '/usr/local/bin/bash' >> /etc/shells"
+# https://stackoverflow.com/a/3557165
+sudo bash -c "grep -qxF '/usr/local/bin/bash' /etc/shells || echo '/usr/local/bin/bash' >> /etc/shells"
 chsh -s /usr/local/bin/bash
 
 echo "Installing Git..."
@@ -64,7 +65,7 @@ cd ~/.my_mac/dotfiles
 ./setup_dotfiles.sh
 
 echo "Installing bin dir..."
-~/.my_mac/bom/install.sh
+~/.my_mac/bin/install.sh
 
 # Apps
 apps=(
@@ -74,7 +75,7 @@ apps=(
   google-chrome
   steam
   spotify
-  zoomus
+  zoom
   microsoft-office
   adobe-creative-cloud
   slack
@@ -101,7 +102,7 @@ echo "Installing rbenv..."
 ~/.my_mac/install_ruby.sh
 
 echo "Installing nvm..."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 brew cleanup
 

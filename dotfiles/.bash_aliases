@@ -17,3 +17,5 @@ alias startpg='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.pl
 alias rmorig='find . -name "*.orig" -delete'
 
 alias uncommit='git reset --soft HEAD^'
+
+alias xcode='open -a Xcode'

@@ -7,10 +7,12 @@ do
    ln -nfs ~/.my_mac/dotfiles/$dotfile ~/$dotfile
 done
 
-if [ -f ~/.bashrc ]
-then
-	echo "Bash files already exist, skipping"
-else
-	echo 'if [ -f ~/.my_mac/dotfiles/.bashrc ]; then . ~/.my_mac/dotfiles/.bashrc; fi' > ~/.bashrc
-	echo "if [ -f ~/.bashrc ]; then . ~/.bashrc; fi" > ~/.bash_profile 
-fi
+prepend_line_to_file () {
+  local line=$1
+  local file="${2/\~/$HOME}"
+  touch "$file"
+  grep -qxF "$line" $file || echo -e "$line\n$(cat $file)" > $file
+}
+
+prepend_line_to_file $'if [ -f ~/.my_mac/dotfiles/.bashrc ]; then . ~/.my_mac/dotfiles/.bashrc; fi\n' '~/.bashrc'
+prepend_line_to_file $'if [ -f ~/.bashrc ]; then . ~/.bashrc; fi\n' '~/.bash_profile'
