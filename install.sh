@@ -74,7 +74,7 @@ apps=(
   google-chrome
   steam
   spotify
-  zoomus
+  zoom
   microsoft-office
   adobe-creative-cloud
   slack
