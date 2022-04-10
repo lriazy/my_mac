@@ -84,6 +84,9 @@ apps=(
   visual-studio-code
   mimestream
   kdiff3
+  authy
+  box-drive
+  tripmode
 )
 
 # Install apps to /Applications
