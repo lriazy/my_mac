@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# For when the "Open With" right-click menu gets cluttered with old versions of apps
+# https://osxdaily.com/2013/01/22/fix-open-with-menu-mac-os-x/
+
+/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"
