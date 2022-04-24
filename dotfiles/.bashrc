@@ -35,7 +35,8 @@ export LSCOLORS=ExGxCxDxBxegedabagaced
 ## Set the prompt to be the output of ~/bin/prompt.pl
 ##
 
-export PS1='$(~/bin/prompt.pl)'
+PROMPT_SCRIPT=~/bin/prompt.pl
+export PS1='$( [ -f '"$PROMPT_SCRIPT"' ] && echo $( '"$PROMPT_SCRIPT"' ) || echo "\e[1;37m[\u@\h \W]\$ \e[0m" )'
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
