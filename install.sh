@@ -121,13 +121,9 @@ echo "Setting terminal theme..."
 echo "Installing secrets..."
 ~/.my_mac/install_secrets.rb
 
-# Open extensions for easy install
-open -a "Google Chrome" https://chrome.google.com/webstore/search/lastpass
-
 # Set reminders for other things to do
 reminders=(
-  "Add Lastpass extension"
-  "Setup Dropbox"
+  "Setup Dropbox (turn off do_not_sync)"
   "Download Photos"
   "Setup Creative Cloud"
   "Log in to MS Office"
@@ -140,6 +136,9 @@ reminders=(
   "Install GoodNotes"
   "Enable apple watch to unlock mac"
   "Require password 5 seconds after screensaver"
+  "Install 1Password from 1password.com"
+  "Add 1Password browser extension"
+  "Install Rice Google Calendar app"
 )
 
 for reminder in "${reminders[@]}"
@@ -151,6 +150,5 @@ open -a "Reminders"
 
 echo "Done!"
 
-echo "About to kill terminal so that its settings take hold... pausing for 10 seconds..."
-sleep 10
+read -p 'Press any key to kill terminal so that its settings take hold...: ' maybeDontNeedThis
 killall Terminal
