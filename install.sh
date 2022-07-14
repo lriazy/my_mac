@@ -41,9 +41,12 @@ brew update
 
 echo "Installing latest Bash and setting it as the default shell..."
 brew install bash
+
+BASH_LOCATION=$(which bash)
+
 # https://stackoverflow.com/a/3557165
-sudo bash -c "grep -qxF '/usr/local/bin/bash' /etc/shells || echo '/usr/local/bin/bash' >> /etc/shells"
-chsh -s /usr/local/bin/bash
+sudo bash -c "grep -qxF '$BASH_LOCATION' /etc/shells || echo '$BASH_LOCATION' >> /etc/shells"
+chsh -s $BASH_LOCATION
 
 echo "Installing Git..."
 brew install git
