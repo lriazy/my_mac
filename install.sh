@@ -111,6 +111,8 @@ echo "Installing rbenv..."
 echo "Installing nvm..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
+echo "source ~/.my_mac/dotfiles/.bashrc_nvm" >> ~/.bashrc
+
 brew cleanup
 
 # echo "Please setup and sync Dropbox, and then run this script again."
