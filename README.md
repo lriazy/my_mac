@@ -3,5 +3,5 @@
 Automated setup for my macs
 
 ```
-bash <(curl https://raw.githubusercontent.com/jpslav/my_mac/master/install.sh)
+bash <(curl https://raw.githubusercontent.com/lriazy/my_mac/master/install.sh)
 ```

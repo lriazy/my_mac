@@ -31,7 +31,7 @@ xcode-select --install
 if test ! $(which brew); then
   echo "Installing homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/jps/.bash_profile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/leiliriazy/.bash_profile
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -45,8 +45,8 @@ echo "Installing Git..."
 brew install git
 
 echo "Git config"
-git config --global user.name "JP Slavinsky"
-git config --global user.email jpslav@gmail.com
+git config --global user.name "LRiazy"
+git config --global user.email leili.riazy@gmail.com
 
 echo "Installing other brew stuff..."
 brew install wget
@@ -56,7 +56,7 @@ brew cleanup
 
 echo "Cloning my_mac"
 cd ~
-git clone git@github.com:jpslav/my_mac.git .my_mac
+git clone git@github.com:lriazy/my_mac.git .my_mac
 
 echo "Setting up dotfiles"
 cd ~/.my_mac/dotfiles

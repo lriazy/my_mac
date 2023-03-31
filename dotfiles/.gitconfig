@@ -7,8 +7,8 @@
   type = cat-file -t
   dump = cat-file -p
 [user]
-	name = JP Slavinsky
-	email = jpslav@gmail.com
+	name =  Leili Riazy
+	email = leili.riazy@gmail.com
 [color]
 	ui = true
 [core]
