@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-for x in $(find . -type d -name ".git"); do pushd $(dirname $x) > /dev/null; (set -x; git status -s $PWD); popd > /dev/null; done

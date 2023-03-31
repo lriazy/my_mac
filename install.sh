@@ -8,10 +8,10 @@ fi
 
 if [ ! -f ~/.ssh/id_rsa ]; then
   echo "Creating an SSH key for you..."
-  ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -C "jpslav@gmail.com"
+  ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -C "lriazy"
 
   # Haven't cloned the git repo yet so just curl it down
-  curl https://raw.githubusercontent.com/jpslav/my_mac/master/dotfiles/ssh_config --output ~/.ssh/config
+  curl https://raw.githubusercontent.com/lriazy/my_mac/master/dotfiles/ssh_config --output ~/.ssh/config
 
   ssh-add -K ~/.ssh/id_rsa
 
@@ -35,18 +35,11 @@ if test ! $(which brew); then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Update homebrew recipes
 echo "Updating homebrew..."
 brew update
 
-echo "Installing latest Bash and setting it as the default shell..."
-brew install bash
-
-BASH_LOCATION=$(which bash)
-
-# https://stackoverflow.com/a/3557165
-sudo bash -c "grep -qxF '$BASH_LOCATION' /etc/shells || echo '$BASH_LOCATION' >> /etc/shells"
-chsh -s $BASH_LOCATION
+echo "Installing zsh... "
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "Installing Git..."
 brew install git
@@ -69,9 +62,6 @@ echo "Setting up dotfiles"
 cd ~/.my_mac/dotfiles
 ./setup_dotfiles.sh
 
-echo "Installing bin dir..."
-~/.my_mac/bin/install.sh
-
 # Apps
 apps=(
   firefox
@@ -86,19 +76,17 @@ apps=(
 echo "installing apps with Cask..."
 brew install --appdir="/Applications" --cask ${apps[@]}
 
-echo "Installing the AWS CLI v2..."
-cd /tmp
-wget https://awscli.amazonaws.com/AWSCLIV2.pkg
-open AWSCLIV2.pkg
-cd ~
+echo "Installing python..."
+brew install pyenv
+pyenv install 3.9.2
 
-echo "Installing rbenv..."
-~/.my_mac/install_ruby.sh
+echo "installing poetry..."
+curl -sSL https://install.python-poetry.org | python3 -
 
 echo "Installing nvm..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-echo "source ~/.my_mac/dotfiles/.bashrc_nvm" >> ~/.bashrc
+echo "source ~/Library/Application Support/pypoetry/venv/bin/poetry" >> ~/.bashrc
 
 brew cleanup
 
