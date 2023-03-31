@@ -74,24 +74,11 @@ echo "Installing bin dir..."
 
 # Apps
 apps=(
-  cleanmymac
-  dropbox
   firefox
-  google-chrome
-  steam
   spotify
-  zoom
   microsoft-office
-  adobe-creative-cloud
-  slack
-  docker
-  anylist
   visual-studio-code
-  mimestream
   kdiff3
-  authy
-  box-drive
-  tripmode
 )
 
 # Install apps to /Applications
@@ -130,22 +117,8 @@ echo "Installing secrets..."
 
 # Set reminders for other things to do
 reminders=(
-  "Setup Dropbox (turn off do_not_sync)"
-  "Download Photos"
-  "Setup Creative Cloud"
-  "Log in to MS Office"
-  "Clean up dock and pin useful apps"
-  "Clean finder: hide tags, etc"
-  "Add Gmail contacts (add account)"
-  "Login to Slack"
-  "Set desktop backgrounds to cycle"
-  "Install Moom"
   "Install GoodNotes"
   "Enable apple watch to unlock mac"
-  "Require password 5 seconds after screensaver"
-  "Install 1Password from 1password.com"
-  "Add 1Password browser extension"
-  "Install Rice Google Calendar app"
 )
 
 for reminder in "${reminders[@]}"
